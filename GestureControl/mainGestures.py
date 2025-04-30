@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from RobotHandGestures import utlis
+from GestureControl import utlis
 
 ##############################################################################
 
