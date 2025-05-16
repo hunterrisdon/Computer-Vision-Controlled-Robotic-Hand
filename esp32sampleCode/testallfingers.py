@@ -5,16 +5,16 @@ import argparse
 import sys
 
 def send_values(port, values):
-    """Send a line like "0,0,0,0,0\n" or "100,100,100,100,100\n" over serial."""
-    if len(values) != 5 or any(v < 0 or v > 100 for v in values):
-        raise ValueError("Need exactly five integers between 0 and 100")
+    """Send a line like "0,0,0,0,0\n" or "180,180,180,180,180\n" over serial."""
+    if len(values) != 5 or any(v < 0 or v > 180 for v in values):
+        raise ValueError("Need exactly five integers between 0 and 180")
     line = ','.join(str(v) for v in values) + '\n'
     port.write(line.encode('utf-8'))
     print(f"> sent: {line.strip()}")
 
 def main():
     p = argparse.ArgumentParser(
-        description="Continuously send 0s and 100s patterns to an ESP32 over USB-serial"
+        description="Continuously send 0s and 180s patterns to an ESP32 over USB-serial"
     )
     p.add_argument(
         '-p','--port',
@@ -40,9 +40,9 @@ def main():
     time.sleep(2)
 
     low = [0, 0, 0, 0, 0]
-    high = [100, 100, 100, 100, 100]
+    high = [180, 180, 180, 180, 180]
 
-    print("Starting continuous test: 100s ↔ 0s every 0.5 s")
+    print("Starting continuous test: 180s ↔ 0s every 0.5 s")
     try:
         while True:
             send_values(ser, high)
