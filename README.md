@@ -1,4 +1,4 @@
-# robothon-sp25
+# Showcase Code of Robothon-sp25
 
 Run main.py to start the the GUI.
 
